@@ -1,0 +1,68 @@
+{
+    "AWSEBDockerrunVersion": "2",
+    "volumes": [
+        {
+            "name": "random_walker",
+            "host": {
+                "sourcePath": "/var/app/current"
+            }
+        },
+        {
+            "name": "nginxconf",
+            "host": {
+                "sourcePath": "/var/app/current/nginx/sites-enabled/random_walker.conf"
+            }
+        }
+    ],
+    "containerDefinition": [
+        {
+            "name": "random_walker_django",
+            "image": "mkao006/random_walker:latest",
+            "essential": true,
+            "memory": 128,
+            "portMappings": [
+                {
+                    "containerPort": 8000
+                }
+            ]
+        },
+        {
+            "name": "random_walker_nginx",
+            "image": "tutum/nginx",
+            "environment": [
+                {
+                    "name": "Container",
+                    "value": "nginx"
+                }
+            ],
+            "mountPoints": [
+                {
+                    "sourceVolume": "nginxconf",
+                    "containerPath": "/usr/local/nginx/conf",
+                    "readOnly": true
+                }
+            ],
+            "essential": true,
+            "memory": 128,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": [
+                "random_walker_django"
+            ],
+        },
+        {
+            "name": "postgis",
+            "image": "",
+            "portMappings": [
+                {
+                    "hostPort": 5432,
+                    "containerPort": 5432
+                }
+            ]
+        }
+    ]
+}
