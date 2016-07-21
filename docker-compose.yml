@@ -11,7 +11,7 @@ services:
       - random_walker:random_walker
   random_walker:
     restart: always
-    build: ./web
+    image: mkao006/random_walker:latest
     expose:
       - "8000"
     tty: true
