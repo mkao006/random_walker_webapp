@@ -2,7 +2,9 @@ version: '2'
 services:
   nginx:
     restart: always
-    build: ./nginx/
+    image: tutum/nginx
+    volumes:
+      - ./nginx/
     ports:
       - "80:80"
     volumes_from:
