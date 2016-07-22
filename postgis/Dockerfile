@@ -66,17 +66,6 @@ RUN wget http://download.osgeo.org/postgis/source/postgis-2.1.8.tar.gz \
     && make comments-install \
     && cd ..
 
-# Configure postgres
-USER postgres
-RUN /etc/init.d/postgresql start \
-    && psql -c "CREATE USER root WITH SUPERUSER PASSWORD 'password';" \
-    && createdb -O root LocationDB \
-    && psql -d LocationDB -c "CREATE EXTENSION postgis";
-
-USER root
-RUN echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/9.3/main/pg_hba.conf
-RUN echo "listen_addresses='*'" >> /etc/postgresql/9.3/main/postgresql.conf
-
 RUN mkdir -p /var/run/postgresql && chown -R postgres /var/run/postgresql
 VOLUME  ["/etc/postgresql", "/var/log/postgresql", "/var/lib/postgresql"]
 
