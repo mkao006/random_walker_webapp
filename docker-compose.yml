@@ -22,6 +22,8 @@ services:
       - postgis
   postgis:
     restart: always
-    build: ./postgis
+    image: mdillon/postgis
+    volumes:
+      - ./postgis/init:/docker-entrypoint-initdb.d/
     ports:
       - "5432:5432"
