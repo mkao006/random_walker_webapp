@@ -10,7 +10,13 @@
         {
             "name": "nginxconf",
             "host": {
-                "sourcePath": "/var/app/current/nginx/sites-enabled/random_walker.conf"
+                "sourcePath": "/var/app/current/nginx/sites-enabled"
+            }
+        },
+        {
+            "name": "postgresconf",
+            "host": {
+                "sourcePath": "/var/app/current/postgis"
             }
         }
     ],
@@ -56,11 +62,22 @@
         },
         {
             "name": "postgis",
-            "image": "",
+            "image": "random_walker_postgis",
             "portMappings": [
                 {
                     "hostPort": 5432,
                     "containerPort": 5432
+                }
+            ],
+            "command": [
+                "/bin/bash",
+                "/usr/local/postgis/docker-entrypoint.sh"
+            ]
+            "mountPoints": [
+                {
+                    "sourceVolume": "postgisconf",
+                    "containerPath": "/usr/local/postgis",
+                    "readOnly": true
                 }
             ]
         }
