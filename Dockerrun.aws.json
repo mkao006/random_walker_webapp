@@ -16,7 +16,7 @@
         {
             "name": "postgresconf",
             "host": {
-                "sourcePath": "/var/app/current/postgis"
+                "sourcePath": "/var/app/current/postgis/init"
             }
         }
     ],
@@ -34,7 +34,7 @@
         },
         {
             "name": "random_walker_nginx",
-            "image": "tutum/nginx",
+            "image": "nginx",
             "environment": [
                 {
                     "name": "Container",
@@ -44,7 +44,7 @@
             "mountPoints": [
                 {
                     "sourceVolume": "nginxconf",
-                    "containerPath": "/usr/local/nginx/conf",
+                    "containerPath": "/etc/nginx/sites-enabled",
                     "readOnly": true
                 }
             ],
@@ -58,25 +58,21 @@
             ],
             "links": [
                 "random_walker_django"
-            ],
+            ]
         },
         {
-            "name": "postgis",
-            "image": "random_walker_postgis",
+            "name": "random_walker_postgis",
+            "image": "mdillon/postgis",
             "portMappings": [
                 {
                     "hostPort": 5432,
                     "containerPort": 5432
                 }
             ],
-            "command": [
-                "/bin/bash",
-                "/usr/local/postgis/docker-entrypoint.sh"
-            ]
             "mountPoints": [
                 {
                     "sourceVolume": "postgisconf",
-                    "containerPath": "/usr/local/postgis",
+                    "containerPath": "/docker-entrypoint-initdb.d/",
                     "readOnly": true
                 }
             ]
