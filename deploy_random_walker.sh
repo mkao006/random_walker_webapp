@@ -10,6 +10,7 @@ rootDir=$(pwd)
 dockerRepo="mkao006"
 appName="random_walker"
 awsConfigDir="$rootDir/config/aws/"
+export envName="random-walker"
 
 read -p "Deploy type [local/aws]: "\
      deploy_type
@@ -23,7 +24,7 @@ then
     docker-compose up -d
 elif [ "$deploy_type" = "aws" ]
 then
-    eb create -i t2.micro --single
+    eb create $envName -i t2.micro --single
     eb console
 fi
 
