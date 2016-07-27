@@ -2,18 +2,19 @@
 
 # kill the deployment, the image name should probably be passed
 appName="random_walker"
-GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
-if [ "$GIT_BRANCH" = "dev" ]
+read -p "Deploy type [local/aws/all]: "\
+     deploy_type
+echo "Deploying $deploy_type"
+
+if [ "$deploy_type" = "local" ]
 then
-    echo "The server already stopped"
-elif [ "$GIT_BRANCH" = "master" ]
+    docker-compose stop
+elif [ "$deploy_type" = "aws" ]
 then
-    sudo docker-compose stop
-elif [ "$GIT_BRANCH" = "production" ]
+    eb terminate
+elif [ "$deploy_type" = "all" ]
 then
-    echo "Production not yet implemented"
-else
-    echo "You are in the wrong branch for deployment"
+    docker-compose stop
+    eb terminate
 fi
-
