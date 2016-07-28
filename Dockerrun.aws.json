@@ -35,6 +35,7 @@
         {
             "name": "random_walker_nginx",
             "image": "nginx",
+            "essential": true,
             "environment": [
                 {
                     "name": "Container",
@@ -63,6 +64,7 @@
         {
             "name": "random_walker_postgis",
             "image": "mdillon/postgis",
+            "essential": true,
             "portMappings": [
                 {
                     "hostPort": 5432,
