@@ -2,29 +2,23 @@
     "AWSEBDockerrunVersion": "2",
     "volumes": [
         {
-            "name": "random_walker",
-            "host": {
-                "sourcePath": "/var/app/current"
-            }
-        },
-        {
             "name": "nginxconf",
             "host": {
                 "sourcePath": "/var/app/current/nginx/sites-enabled"
             }
         },
         {
-            "name": "postgresconf",
+            "name": "postgisconf",
             "host": {
                 "sourcePath": "/var/app/current/postgis/init"
             }
         }
     ],
-    "containerDefinition": [
+    "containerDefinitions": [
         {
-            "name": "random_walker_django",
+            "name": "random_walker",
             "image": "mkao006/random_walker:latest",
-            "essential": true,
+            "essential": false,
             "memory": 128,
             "portMappings": [
                 {
@@ -36,12 +30,7 @@
             "name": "random_walker_nginx",
             "image": "nginx",
             "essential": true,
-            "environment": [
-                {
-                    "name": "Container",
-                    "value": "nginx"
-                }
-            ],
+            "memory": 128,
             "mountPoints": [
                 {
                     "sourceVolume": "nginxconf",
@@ -49,22 +38,18 @@
                     "readOnly": true
                 }
             ],
-            "essential": true,
-            "memory": 128,
             "portMappings": [
                 {
                     "hostPort": 80,
                     "containerPort": 80
                 }
-            ],
-            "links": [
-                "random_walker_django"
             ]
         },
         {
             "name": "random_walker_postgis",
             "image": "mdillon/postgis",
             "essential": true,
+            "memory": 128,
             "portMappings": [
                 {
                     "hostPort": 5432,
