@@ -41,7 +41,7 @@
             "mountPoints": [
                 {
                     "sourceVolume": "nginxconf",
-                    "containerPath": "/etc/nginx/sites-enabled",
+                    "containerPath": "/etc/nginx/conf.d",
                     "readOnly": true
                 }
             ],
