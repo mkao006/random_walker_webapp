@@ -15,6 +15,6 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
     GRANT ALL PRIVILEGES ON DATABASE random_walker TO random_walker;
 EOSQL
 
-psql -d postgres -c "\l"
+psql -U postgres -d postgres -c "\l"
 
 
