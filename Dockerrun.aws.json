@@ -28,6 +28,9 @@
                 {
                     "containerPort": 8000
                 }
+            ],
+            "links": [
+                "postgis"
             ]
         },
         {
