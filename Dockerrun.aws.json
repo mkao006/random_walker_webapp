@@ -59,7 +59,7 @@
             "name": "postgis",
             "image": "mdillon/postgis",
             "essential": true,
-            "memory": 128,
+            "memory": 256,
             "portMappings": [
                 {
                     "hostPort": 5432,
