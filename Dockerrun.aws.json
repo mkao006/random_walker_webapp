@@ -18,7 +18,7 @@
         {
             "name": "random_walker",
             "image": "mkao006/random_walker:latest",
-            "essential": false,
+            "essential": true,
             "memory": 128,
             "portMappings": [
                 {
@@ -43,6 +43,9 @@
                     "hostPort": 80,
                     "containerPort": 80
                 }
+            ],
+            "links": [
+                "random_walker"
             ]
         },
         {
