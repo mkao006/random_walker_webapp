@@ -23,7 +23,7 @@
             "name": "random_walker",
             "image": "mkao006/random_walker:latest",
             "essential": true,
-            "memory": 128,
+            "memory": 256,
             "portMappings": [
                 {
                     "containerPort": 8000
