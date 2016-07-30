@@ -8,7 +8,7 @@
         {
             "name": "nginxconf",
             "host": {
-                "sourcePath": "/var/app/current/nginx/sites-enabled"
+                "sourcePath": "/var/app/current/nginx/conf.d"
             }
         },
         {
