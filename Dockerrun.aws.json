@@ -1,12 +1,10 @@
 {
     "AWSEBDockerrunVersion": "2",
+    "authentication": {
+        "bucket": "random-walker",
+        "key": ".docker/config.json"
+    },
     "volumes": [
-        {
-            "name": "random_walker",
-            "host": {
-                "sourcePath": "/var/app/current"
-            }
-        },
         {
             "name": "nginxconf",
             "host": {
@@ -14,42 +12,39 @@
             }
         },
         {
-            "name": "postgresconf",
+            "name": "postgisconf",
             "host": {
-                "sourcePath": "/var/app/current/postgis"
+                "sourcePath": "/var/app/current/postgis/init"
             }
         }
     ],
-    "containerDefinition": [
+    "containerDefinitions": [
         {
-            "name": "random_walker_django",
+            "name": "random_walker",
             "image": "mkao006/random_walker:latest",
             "essential": true,
-            "memory": 128,
+            "memory": 256,
             "portMappings": [
                 {
                     "containerPort": 8000
                 }
+            ],
+            "links": [
+                "postgis"
             ]
         },
         {
-            "name": "random_walker_nginx",
-            "image": "tutum/nginx",
-            "environment": [
-                {
-                    "name": "Container",
-                    "value": "nginx"
-                }
-            ],
+            "name": "nginx",
+            "image": "nginx",
+            "essential": true,
+            "memory": 128,
             "mountPoints": [
                 {
                     "sourceVolume": "nginxconf",
-                    "containerPath": "/usr/local/nginx/conf",
+                    "containerPath": "/etc/nginx/conf.d",
                     "readOnly": true
                 }
             ],
-            "essential": true,
-            "memory": 128,
             "portMappings": [
                 {
                     "hostPort": 80,
@@ -57,26 +52,24 @@
                 }
             ],
             "links": [
-                "random_walker_django"
-            ],
+                "random_walker"
+            ]
         },
         {
             "name": "postgis",
-            "image": "random_walker_postgis",
+            "image": "mdillon/postgis",
+            "essential": true,
+            "memory": 256,
             "portMappings": [
                 {
                     "hostPort": 5432,
                     "containerPort": 5432
                 }
             ],
-            "command": [
-                "/bin/bash",
-                "/usr/local/postgis/docker-entrypoint.sh"
-            ]
             "mountPoints": [
                 {
                     "sourceVolume": "postgisconf",
-                    "containerPath": "/usr/local/postgis",
+                    "containerPath": "/docker-entrypoint-initdb.d/",
                     "readOnly": true
                 }
             ]
