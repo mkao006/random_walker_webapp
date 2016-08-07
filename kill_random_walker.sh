@@ -35,6 +35,8 @@ then
     docker-compose stop
     docker-compose rm -f
     eb terminate $envName
+else
+    echo "Inappropriate deployment type, must be 'local', 'eb' or 'all'"
 fi
 
 unset envName
