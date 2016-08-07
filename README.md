@@ -5,6 +5,12 @@ This is the repository for the deployment of the `Random Walker` application.
 [![Stories in
 Ready](https://badge.waffle.io/mkao006/random_walker.png?label=ready&title=Ready)](https://waffle.io/mkao006/random_walker_webapp)
 
+## Configuration
+
+Several setups are required to deploy the application, for more information on
+how to configure the setup please see
+[configuration.md](https://github.com/mkao006/random_walker_webapp/blob/dev/configuration.md)
+
 ## Components
 
 The web application consists of the following components:
