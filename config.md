@@ -1,5 +1,11 @@
 # Random Walker Web App Configuration
 
+This page explains the additional configuration file of the web app.
+
+Nevertheless, when deploying with `Docker-compose`, all configuration are
+already handled by either `docker-compose.yml` or `Dockerrun.aws.json`. Thus, no
+additional configuration is required.
+
 ## Random Walker
 
 Currently, the `Random Walker` image is private and requires authentication
