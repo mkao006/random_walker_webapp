@@ -1,4 +1,15 @@
-# This is the configuration folder for the Nginx
+# Random Walker Web App Configuration
+
+## Random Walker
+
+The `Random Walker` application requires many pieces of software. For a detailed
+list please refer to the
+[`Dockerfile`](https://github.com/mkao006/random_walker/blob/master/Dockerfile).
+
+The required `python` libraries are listed in under the
+[requirement.txt](https://github.com/mkao006/random_walker/blob/master/requirements.txt)
+
+## Nginx
 
 [Nginx](https://nginx.org/en/) is an HTTP and reverse proxy server, and a
 generic TCP/UDP proxy server.
@@ -14,46 +25,36 @@ example, static files will be directly served (although not currently
 implemented.), while request to generate new location will be forward to the
 application.
 
-`WSGI` is a **specification** for the communnication between the web server and
-the application server. The `uWSGI` is the **application server** that handles
-the communication while `uwsgi` is the **binary protocol** implemented by uWSGI
-to communicate with the web server.
+### Installation
+To install `Nginx`, follow the [installation
+guide](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-14-04-lts).
 
-When `Nginx` is inactive, the web client can not reach the server, and returns
-the website can not be reached error.
+### Configuration
 
-On the other hand, when `Nginx` is up, and uWSGI` is not, a 502 bad gateway
-error will be raised, and an entry like the follow will be appended in the
-error_log.
+We need to configure `Nginx` so that it knows how to redirect the requests.
 
-```
-2016/07/04 17:04:30 [error] 8488#0: *2 connect() to unix:/home/mk/Github/random_walker/web/random_walker.sock failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "uwsgi://unix:/home/mk/Github/random_walker/web/random_walker.sock:", host: "localhost:8000"
-```
+The [configuration
+files](https://github.com/mkao006/random_walker_webapp/blob/master/nginx/conf.d/random_walker.conf)
+sits under the **nginx** directory. The server listen to the port `80` from the
+allowed `server_name` then redirect the request to `Django`.
 
 
-## Configure uWSGI
+## PostGis
 
-To configure the uWSGI, we need to have two files. The configuration `.ini` file
-and the start up script.
+`PostGIS` is a spatial database extender for `PostgreSQL` object-relational
+database.
 
-The file `random_walker.ini` holds the parameter for the uWSGI.
+### Installation
 
-The file `uwsgi.conf` is the Upstart script.
+The installation of `PostGis` can be cumbersome. Please follow where ever
+[Google](https://www.google.com/) takes you.
 
-## Configure Nginx
 
-We need to configure Nginx in order to handle the request.
+### Configuration
+The [initialise
+script](https://github.com/mkao006/random_walker_webapp/blob/master/postgis/init/random_walker_db.sh)
+is under the **postgis** directory.
 
-The file `random_walker.conf` contains the current configuration for the Nginx.
-
-## Reconfigure
-
-To reconfigure, simply modify these files then run the *reconfigure.sh* bash
-script.
-
-## Logs
-
-The logs of the Nginx are stored at `/var/log/nginx/`.
-
-The **access.log** details the requests received by `Nginx`, while the
-**error.log** details any error encountered by `Nginx`.
+This configuration file creates the database required for the `Random Walker`
+application. This is required as `Django` can not create the database, and it
+has to be initialised before `Django` can make the migration.
