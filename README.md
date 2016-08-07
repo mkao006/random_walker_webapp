@@ -7,9 +7,8 @@ Ready](https://badge.waffle.io/mkao006/random_walker.png?label=ready&title=Ready
 
 ## Setup
 
-Several setups are required to deploy the application, for more information on
-how to configure the setup please see
-[configuration.md](https://github.com/mkao006/random_walker_webapp/blob/dev/configuration.md)
+Several setups are required to deploy the application, for more information
+please see [setup.md](https://github.com/mkao006/random_walker_webapp/setup.md)
 
 ## Components
 
