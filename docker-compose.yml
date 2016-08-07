@@ -4,8 +4,8 @@ services:
     restart: always
     image: nginx
     volumes:
-      - ./nginx/sites-enabled/:/etc/nginx/conf.d
-    command: /bin/bash -c "envsubst < /etc/nginx/conf.d/random_walker.conf > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+      - ./nginx/conf.d/:/etc/nginx/sites-enabled
+    command: /bin/bash -c "envsubst < /etc/nginx/sites-enabled/random_walker.conf >/etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
     ports:
       - "80:80"
     volumes_from:
