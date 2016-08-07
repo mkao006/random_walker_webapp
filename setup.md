@@ -2,10 +2,7 @@
 
 The following configurations are required for the Random Walker web application.
 
-
-## Local Configuration
-
-### Nginx
+## Nginx
 
 [Nginx](https://nginx.org/en/) is an HTTP and reverse proxy server, and a
 generic TCP/UDP proxy server.
@@ -21,11 +18,11 @@ example, static files will be directly served (although not currently
 implemented.), while request to generate new location will be forward to the
 application.
 
-#### Installation
-To install `Nginx, follow the [installation
+### Installation
+To install `Nginx`, follow the [installation
 guide](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-14-04-lts).
 
-#### Configuration
+### Configuration
 
 We need to configure `Nginx` so that it knows how to redirect the requests.
 
@@ -35,18 +32,18 @@ sits under the **nginx** directory. The server listen to the port `80` from the
 allowed `server_name` then redirect the request to `Django`.
 
 
-### PostGis
+## PostGis
 
 `PostGIS` is a spatial database extender for `PostgreSQL` object-relational
 database.
 
-#### Installation
+### Installation
 
 The installation of `PostGis` can be cumbersome. Please follow where ever
 [Google](https://www.google.com/) takes you.
 
 
-#### Configuration
+### Configuration
 The [initialise
 script](https://github.com/mkao006/random_walker_webapp/blob/master/postgis/init/random_walker_db.sh)
 is under the **postgis** directory.
@@ -55,22 +52,20 @@ This configuration file creates the database required for the `Random Walker`
 application. This is required as `Django` can not create the database, and it
 has to be initialised before `Django` can make the migration.
 
-### Random Walker
+## Random Walker
 
 The `Random Walker` application requires many pieces of software. For a detailed
 list please refer to the
 [`Dockerfile`](https://github.com/mkao006/random_walker/blob/master/Dockerfile).
 
 The required `python` libraries are listed in under the
-[`requirement.txt](https://github.com/mkao006/random_walker/blob/master/requirements.txt)
+[requirement.txt](https://github.com/mkao006/random_walker/blob/master/requirements.txt)
 
+## Elastic Beanstalk
 
+## Docker
 
-## Deployment Tool
-
-### Elastic Beanstalk
-
-### Dockerhub
+## Dockerhub
 
 Currently, the `Random Walker` image is private and requires authentication
 provided in `.docker/config.json`. The file is also on AWS S3 private bucket.
