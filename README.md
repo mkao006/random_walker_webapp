@@ -5,6 +5,11 @@ This is the repository for the deployment of the `Random Walker` application.
 [![Stories in
 Ready](https://badge.waffle.io/mkao006/random_walker.png?label=ready&title=Ready)](https://waffle.io/mkao006/random_walker_webapp)
 
+## Setup
+
+Several setups are required to deploy the application, for more information
+please see [setup.md](https://github.com/mkao006/random_walker_webapp/setup.md)
+
 ## Components
 
 The web application consists of the following components:
@@ -22,20 +27,12 @@ Walker](https://github.com/mkao006/random_walker)
 The `Nginx` web server uses the official nginx image from
 [Dockerhub](https://hub.docker.com/_/nginx/).
 
-The [configuration
-files](https://github.com/mkao006/random_walker_webapp/blob/master/nginx/conf.d/random_walker.conf)
-sits under the **nginx** directory.
-
 
 ### Postgis
 
 We use the `Postgis` image from
 [Dockerhub](https://hub.docker.com/r/mdillon/postgis/) which is an extension of
 the official [`Postgres` image](https://hub.docker.com/_/postgres/).
-
-The [initialise
-script](https://github.com/mkao006/random_walker_webapp/blob/master/postgis/init/random_walker_db.sh)
-is under the **postgis** directory.
 
 ## Deployment
 
