@@ -1,0 +1,8 @@
+*.md
+*.sh
+.git
+docker-compose.yml
+!postgis/
+!nginx
+!Dockerrun.aws.json
+!.ebextensions/*
