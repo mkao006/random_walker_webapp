@@ -21,6 +21,12 @@ pip install awscli
 pip install awsebcli
 ```
 
+After installing the AWS command line tool, enter `aws configure` to set up the
+AWS credentials.
+
+Then change directory to the root of the project and then enter `eb init` to
+start configuring the project.
+
 ## Docker
 
 Docker is an open-source project that automates the deployment of applications

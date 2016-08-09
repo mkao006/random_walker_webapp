@@ -36,7 +36,7 @@ then
     docker-compose up -d
 elif [ "$deploy_type" = "eb" ]
 then
-    eb create $envName -i t2.micro --single
+    eb create $envName -i t2.micro
     eb console
 else
     echo "Inappropriate deployment type, must be 'local' or 'eb'"
