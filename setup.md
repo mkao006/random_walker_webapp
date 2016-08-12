@@ -61,3 +61,19 @@ AWS credentials.
 Then change directory to the root of the project and then enter `eb init` to
 start configuring the project.
 
+### EB configurations
+
+The EB configurations (`.elasticbeanstalk` and `.ebextensions`) are stored on
+the private `random-walker-config` bucket on S3.
+
+They can be updated with
+
+```
+aws s3 cp <local_config_location> <s3_location>
+```
+
+and retrieved with
+
+```
+aws s3 cp <s3_location> <local_config_location>
+```

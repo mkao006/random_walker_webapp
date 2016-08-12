@@ -20,7 +20,7 @@
         {
             "name": "randomwalkerconf",
             "host": {
-                "sourcePath": "/var/app/current/randomwalker/settings/credentials"
+                "sourcePath": "/var/app/current/random_walker/settings/credentials"
             }
         }
     ],

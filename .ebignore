@@ -1,9 +1,9 @@
 *.md
 *.sh
 .git
-docker-compose.yml
-!postgis/
-!nginx
+*.yml
+postgis/*
+nginx/*
+venv/
 !Dockerrun.aws.json
 !.ebextensions/*
-venv/
