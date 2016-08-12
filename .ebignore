@@ -6,3 +6,4 @@ docker-compose.yml
 !nginx
 !Dockerrun.aws.json
 !.ebextensions/*
+venv/

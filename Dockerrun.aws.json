@@ -1,7 +1,7 @@
 {
     "AWSEBDockerrunVersion": "2",
     "authentication": {
-        "bucket": "random-walker",
+        "bucket": "random-walker-config",
         "key": ".docker/config.json"
     },
     "volumes": [
@@ -16,6 +16,12 @@
             "host": {
                 "sourcePath": "/var/app/current/postgis/init"
             }
+        },
+        {
+            "name": "randomwalkerconf",
+            "host": {
+                "sourcePath": "/var/app/current/randomwalker/settings/credentials"
+            }
         }
     ],
     "containerDefinitions": [
@@ -24,6 +30,13 @@
             "image": "mkao006/random_walker:latest",
             "essential": true,
             "memory": 256,
+            "mountPoints": [
+                {
+                    "sourceVolume": "randomwalkerconf",
+                    "containerPath": "/srv/random_walker/settings/credentials",
+                    "readOnly": true
+                }
+            ],
             "portMappings": [
                 {
                     "containerPort": 8000
