@@ -33,7 +33,7 @@
             "mountPoints": [
                 {
                     "sourceVolume": "randomwalkerconf",
-                    "containerPath": "/settings/credentials",
+                    "containerPath": "/srv/random_walker/settings/credentials",
                     "readOnly": true
                 }
             ],
