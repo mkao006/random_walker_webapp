@@ -29,7 +29,7 @@
             "name": "random_walker",
             "image": "mkao006/random_walker:latest",
             "essential": true,
-            "memory": 256,
+            "memory": 512,
             "mountPoints": [
                 {
                     "sourceVolume": "randomwalkerconf",
