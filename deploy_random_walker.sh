@@ -31,6 +31,8 @@ fi
 ## Deploy by type
 if [ "$deploy_type" = "local" ]
 then
+    kill `lsof -t -i :5432`
+    kill `lsof -t -i :80`
     docker-compose stop
     docker-compose build
     docker-compose up -d
