@@ -39,6 +39,9 @@ then run the following.
 sudo bash -c "curl -L https://github.com/docker/machine/releases/download/v0.7.0-rc3/docker-machine-`uname -s`-`uname -m` > /usr/local/bin/docker-machine && chmod +x /usr/local/bin/docker-machine"
 ```
 
+After `Docker` has been installed, you can execute `sudo docker login` to create
+authentication locally.
+
 ** IMPORTANT NOTE: The Docker must be installed before the EB command line
    interface, as EB depends on Docker. If EB CLI is installed first, you might
    risk that the Docker version installed is unsupported by EB and result in
@@ -60,3 +63,11 @@ AWS credentials.
 
 Then change directory to the root of the project and then enter `eb init` to
 start configuring the project.
+
+
+After the AWS CLI has been installed and configured, you can obtain all the
+[configurations](config.md) below by executing the following code.
+
+```
+sudo sh init_local.sh
+```

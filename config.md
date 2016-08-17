@@ -5,13 +5,6 @@ This page explains the additional configuration file of the web app.
 The configuration files are stored on the `random-walker-config` bucket on S3.
 It is private and thus requires aws authentication setup.
 
-After the AWS CLI has been installed and configured, you can obtain all the
-configurations below by executing the following code.
-
-```
-. download_configuration.sh
-```
-
 ## Random Walker
 
 Currently, the `Random Walker` image is private and requires authentication
