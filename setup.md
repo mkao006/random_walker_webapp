@@ -42,7 +42,7 @@ sudo bash -c "curl -L https://github.com/docker/machine/releases/download/v0.7.0
 After `Docker` has been installed, you can execute `sudo docker login` to create
 authentication locally.
 
-** IMPORTANT NOTE: The Docker must be installed before the EB command line
+**IMPORTANT NOTE: The Docker must be installed before the EB command line
    interface, as EB depends on Docker. If EB CLI is installed first, you might
    risk that the Docker version installed is unsupported by EB and result in
    error.**
