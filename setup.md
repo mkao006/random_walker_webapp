@@ -39,7 +39,10 @@ then run the following.
 sudo bash -c "curl -L https://github.com/docker/machine/releases/download/v0.7.0-rc3/docker-machine-`uname -s`-`uname -m` > /usr/local/bin/docker-machine && chmod +x /usr/local/bin/docker-machine"
 ```
 
-** IMPORTANT NOTE: The Docker must be installed before the EB command line
+After `Docker` has been installed, you can execute `sudo docker login` to create
+authentication locally.
+
+**IMPORTANT NOTE: The Docker must be installed before the EB command line
    interface, as EB depends on Docker. If EB CLI is installed first, you might
    risk that the Docker version installed is unsupported by EB and result in
    error.**
@@ -61,19 +64,10 @@ AWS credentials.
 Then change directory to the root of the project and then enter `eb init` to
 start configuring the project.
 
-### EB configurations
 
-The EB configurations (`.elasticbeanstalk` and `.ebextensions`) are stored on
-the private `random-walker-config` bucket on S3.
-
-They can be updated with
+After the AWS CLI has been installed and configured, you can obtain all the
+[configurations](config.md) below by executing the following code.
 
 ```
-aws s3 cp <local_config_location> <s3_location>
-```
-
-and retrieved with
-
-```
-aws s3 cp <s3_location> <local_config_location>
+sudo sh init_local.sh
 ```

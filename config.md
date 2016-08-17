@@ -2,9 +2,8 @@
 
 This page explains the additional configuration file of the web app.
 
-Nevertheless, when deploying with `Docker-compose`, all configuration are
-already handled by either `docker-compose.yml` or `Dockerrun.aws.json`. Thus, no
-additional configuration is required.
+The configuration files are stored on the `random-walker-config` bucket on S3.
+It is private and thus requires aws authentication setup.
 
 ## Random Walker
 
@@ -37,10 +36,9 @@ application.
 
 We need to configure `Nginx` so that it knows how to redirect the requests.
 
-The [configuration
-files](https://github.com/mkao006/random_walker_webapp/blob/master/nginx/conf.d/random_walker.conf)
-sits under the **nginx** directory. The server listen to the port `80` from the
-allowed `server_name` then redirect the request to `Django`.
+The configuration files sits under the **nginx** directory. The server listen to
+the port `80` from the allowed `server_name` then redirect the request to
+`Django`.
 
 
 ## PostGis
@@ -49,9 +47,8 @@ allowed `server_name` then redirect the request to `Django`.
 database.
 
 ### Configuration
-The [initialise
-script](https://github.com/mkao006/random_walker_webapp/blob/master/postgis/init/random_walker_db.sh)
-is under the **postgis** directory.
+
+The initialise script is under the **postgis** directory.
 
 This configuration file creates the database required for the `Random Walker`
 application. This is required as `Django` can not create the database, and it

@@ -32,7 +32,7 @@ The `Nginx` web server uses the official nginx image from
 
 We use the `Postgis` image from
 [Dockerhub](https://hub.docker.com/r/mdillon/postgis/) which is an extension of
-the official [`Postgres` image](https://hub.docker.com/_/postgres/).
+the official [`Postgres`](https://hub.docker.com/_/postgres/) image.
 
 ## Deployment
 
@@ -60,4 +60,4 @@ is present; then we can deploy on AWS EB with,
 To kill the application, substitute one of `local`, `eb` or `all` into the
 `<deployment_type>` in the following command.
 
-``` sudo sh kill_random_walker.sh <deployment_type> ```
+``` sudo sh kill_random_walker.sh --<deployment_type> ```
