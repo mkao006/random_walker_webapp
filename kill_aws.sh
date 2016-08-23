@@ -3,25 +3,6 @@
 # kill the deployment, the image name should probably be passed
 appName="random_walker"
 
-if [ "$#" -eq 0 ]
-then
-    read -p "Deploy type [local/aws/all]: "\
-         deploy_type
-    echo "kill $deploy_type deployment"
-else
-    for arg in "$@"
-    do
-        case $arg in
-            "--local" )
-                deploy_type="local";;
-            "--eb" )
-                deploy_type="eb";;
-            "--all" )
-                deploy_type="all";;
-        esac
-    done
-fi
-
 
 if [ "$deploy_type" = "local" ]
 then
