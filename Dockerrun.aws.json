@@ -16,12 +16,6 @@
             "host": {
                 "sourcePath": "/var/app/current/postgis/init"
             }
-        },
-        {
-            "name": "randomwalkerconf",
-            "host": {
-                "sourcePath": "/var/app/current/random_walker/settings/credentials"
-            }
         }
     ],
     "containerDefinitions": [
@@ -30,13 +24,6 @@
             "image": "mkao006/random_walker:latest",
             "essential": true,
             "memory": 512,
-            "mountPoints": [
-                {
-                    "sourceVolume": "randomwalkerconf",
-                    "containerPath": "/srv/random_walker/settings/credentials",
-                    "readOnly": true
-                }
-            ],
             "portMappings": [
                 {
                     "containerPort": 8000
@@ -62,6 +49,10 @@
                 {
                     "hostPort": 80,
                     "containerPort": 80
+                },
+                {
+                    "hostPort": 8080,
+                    "containerPort": 8080
                 }
             ],
             "links": [

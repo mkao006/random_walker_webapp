@@ -11,16 +11,10 @@ NC='\033[0m'
 
 echo "Making directories ... "
 mkdir -p .ebextensions
-mkdir -p random_walker/settings/credentials/
-mkdir -p nginx/conf.d/
-mkdir -p postgis/init/
 
 echo "Downloading configurations ..."
 aws s3 cp s3://random-walker-config/.ebextensions/read_config.config .ebextensions/
 aws s3 cp s3://random-walker-config/.ebextensions/securelistener.config .ebextensions/
-aws s3 cp s3://random-walker-config/random_walker/settings/credentials/settings.json random_walker/settings/credentials/
-aws s3 cp s3://random-walker-config/nginx/conf.d/random_walker.conf nginx/conf.d/
-aws s3 cp s3://random-walker-config/postgis/init/random_walker_db.sh postgis/init/
 
 ## Check if EB CLI has been configured.
 if [ ! -d ".elasticbeanstalk" ];
