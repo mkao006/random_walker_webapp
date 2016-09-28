@@ -10,12 +10,6 @@
             "host": {
                 "sourcePath": "/var/app/current/nginx/conf.d"
             }
-        },
-        {
-            "name": "postgisconf",
-            "host": {
-                "sourcePath": "/var/app/current/postgis/init"
-            }
         }
     ],
     "containerDefinitions": [
@@ -28,9 +22,6 @@
                 {
                     "containerPort": 8000
                 }
-            ],
-            "links": [
-                "postgis"
             ]
         },
         {
@@ -57,25 +48,6 @@
             ],
             "links": [
                 "random_walker"
-            ]
-        },
-        {
-            "name": "postgis",
-            "image": "mdillon/postgis",
-            "essential": true,
-            "memory": 256,
-            "portMappings": [
-                {
-                    "hostPort": 5432,
-                    "containerPort": 5432
-                }
-            ],
-            "mountPoints": [
-                {
-                    "sourceVolume": "postgisconf",
-                    "containerPath": "/docker-entrypoint-initdb.d/",
-                    "readOnly": true
-                }
             ]
         }
     ]
