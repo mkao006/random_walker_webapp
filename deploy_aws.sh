@@ -7,7 +7,7 @@ envName="random-walker"
 ## Restore database
 aws rds restore-db-instance-from-db-snapshot \
     --db-instance-identifier random-walker \
-    --db-snapshot-identifier random-walker-db-final-snapshot\
+    --db-snapshot-identifier random-walker-latest-snapshot\
     --db-instance-class db.t2.micro \
     --port 5432 \
     --no-multi-az\
