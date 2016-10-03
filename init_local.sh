@@ -9,18 +9,9 @@ fi
 RED='\033[0;31m'
 NC='\033[0m'
 
-echo "Making directories ... "
-mkdir -p .ebextensions
-
 echo "Downloading configurations ..."
-aws s3 cp s3://random-walker-config/.ebextensions/read_config.config .ebextensions/
-aws s3 cp s3://random-walker-config/.ebextensions/securelistener.config .ebextensions/
-
-## Check if EB CLI has been configured.
-if [ ! -d ".elasticbeanstalk" ];
-then
-    echo "${RED}Please configure your EB CLI command line with 'eb configure'${NC}"
-fi
+aws s3 cp --recursive s3://random-walker-config/.ebextensions/ .ebextensions/
+aws s3 cp --recursive s3://random-walker-config/.elasticbeanstalk/ .elasticbeanstalk/
 
 ## Check if Docker configuration exist
 if [ ! -f ~/.docker/config.json ];
