@@ -17,26 +17,12 @@ inside software containers.
 
 ### Installation
 
-```
-sudo apt-get update && sudo apt-get install docker-engine
-```
+Check out the [complete installation
+guide.](https://docs.docker.com/engine/installation/linux/ubuntulinux/)
+
 
 ```
 pip install docker-compose
-```
-
-Install the docker machine
-```
-curl -L https://github.com/docker/machine/releases/download/v0.7.0-rc3/docker-machine-`uname -s`-`uname -m` >/usr/local/bin/docker-machine && \
-  chmod +x /usr/local/bin/docker-machine
-```
-
-If you have the [permissiong or curl
-problem](https://forums.docker.com/t/permission-denied-when-trying-to-install-compose-on-ubuntu/1034/5),
-then run the following.
-
-```
-sudo bash -c "curl -L https://github.com/docker/machine/releases/download/v0.7.0-rc3/docker-machine-`uname -s`-`uname -m` > /usr/local/bin/docker-machine && chmod +x /usr/local/bin/docker-machine"
 ```
 
 After `Docker` has been installed, you can execute `sudo docker login` to create
